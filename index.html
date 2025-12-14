@@ -1,0 +1,3658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIGHT Thaw Tracker</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
+        h1 { text-align: center; color: #333; }
+        #stats { background: #fff; padding: 20px; margin-bottom: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+        #stats p { font-size: 1.2em; margin: 10px; }
+        table { width: 100%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        th { background: #4CAF50; color: white; }
+    </style>
+</head>
+<body>
+    <h1>NIGHT Token Thaw Tracker</h1>
+    <div id="stats"></div>
+    <table id="thawTable" class="display">
+        <thead>
+            <tr>
+                <th>Wallet</th>
+                <th>Account</th>
+                <th>Total NIGHT</th>
+                <th>First Thaw Date</th>
+                <th>Redeemable %</th>
+                <th>Redeemable NIGHT</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script type="application/json" id="data-json">
+        [
+        {
+          "wallet": "Wallet 33",
+          "account": "Account 1",
+          "total_night": 49.04,
+          "thaw_serial": 46061
+        },
+        {
+          "wallet": "Wallet 33",
+          "account": "Account 2",
+          "total_night": 34.4,
+          "thaw_serial": 46083
+        },
+        {
+          "wallet": "Wallet 33",
+          "account": "Account 3",
+          "total_night": 27.81,
+          "thaw_serial": 46052
+        },
+        {
+          "wallet": "Wallet 33",
+          "account": "Account 4",
+          "total_night": 15.36,
+          "thaw_serial": 46084
+        },
+        {
+          "wallet": "Wallet 33",
+          "account": "Account 5",
+          "total_night": 4.39,
+          "thaw_serial": 46018
+        },
+        {
+          "wallet": "Wallet 33",
+          "account": "Account 6",
+          "total_night": 5.85,
+          "thaw_serial": 46035
+        },
+        {
+          "wallet": "Wallet 33",
+          "account": "Account 7",
+          "total_night": 5.85,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 33",
+          "account": "Account 8",
+          "total_night": 5.85,
+          "thaw_serial": 46067
+        },
+        {
+          "wallet": "Wallet 33",
+          "account": "Account 9",
+          "total_night": 2.19,
+          "thaw_serial": 46082
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 1",
+          "total_night": 8.78,
+          "thaw_serial": 46092
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 2",
+          "total_night": 8.78,
+          "thaw_serial": 46052
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 3",
+          "total_night": 8.78,
+          "thaw_serial": 46082
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 4",
+          "total_night": 8.78,
+          "thaw_serial": 46091
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 5",
+          "total_night": 8.78,
+          "thaw_serial": 46011
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 6",
+          "total_night": 6.59,
+          "thaw_serial": 46005
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 7",
+          "total_night": 6.59,
+          "thaw_serial": 46033
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 8",
+          "total_night": 6.59,
+          "thaw_serial": 46072
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 9",
+          "total_night": 6.59,
+          "thaw_serial": 46032
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 10",
+          "total_night": 6.59,
+          "thaw_serial": 46031
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 11",
+          "total_night": 6.59,
+          "thaw_serial": 46053
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 12",
+          "total_night": 6.59,
+          "thaw_serial": 46006
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 13",
+          "total_night": 6.59,
+          "thaw_serial": 46085
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 14",
+          "total_night": 6.59,
+          "thaw_serial": 46032
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 15",
+          "total_night": 6.59,
+          "thaw_serial": 46075
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 16",
+          "total_night": 6.59,
+          "thaw_serial": 46021
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 17",
+          "total_night": 6.59,
+          "thaw_serial": 46066
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 18",
+          "total_night": 4.39,
+          "thaw_serial": 46090
+        },
+        {
+          "wallet": "Wallet 32",
+          "account": "Account 19",
+          "total_night": 2.19,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 1",
+          "total_night": 50.74,
+          "thaw_serial": 46060
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 2",
+          "total_night": 50.74,
+          "thaw_serial": 46050
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 3",
+          "total_night": 50.74,
+          "thaw_serial": 46075
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 4",
+          "total_night": 50.74,
+          "thaw_serial": 46009
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 5",
+          "total_night": 50.74,
+          "thaw_serial": 46055
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 6",
+          "total_night": 50.74,
+          "thaw_serial": 46024
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 7",
+          "total_night": 50.74,
+          "thaw_serial": 46051
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 8",
+          "total_night": 50.74,
+          "thaw_serial": 46010
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 9",
+          "total_night": 50.74,
+          "thaw_serial": 46079
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 10",
+          "total_night": 50.74,
+          "thaw_serial": 46061
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 11",
+          "total_night": 50.74,
+          "thaw_serial": 46064
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 12",
+          "total_night": 50.74,
+          "thaw_serial": 46090
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 13",
+          "total_night": 50.74,
+          "thaw_serial": 46081
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 14",
+          "total_night": 50.74,
+          "thaw_serial": 46086
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 15",
+          "total_night": 50.74,
+          "thaw_serial": 46071
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 16",
+          "total_night": 50.74,
+          "thaw_serial": 46027
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 17",
+          "total_night": 50.74,
+          "thaw_serial": 46056
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 18",
+          "total_night": 50.74,
+          "thaw_serial": 46040
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 19",
+          "total_night": 50.74,
+          "thaw_serial": 46059
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 20",
+          "total_night": 50.74,
+          "thaw_serial": 46074
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 21",
+          "total_night": 50.74,
+          "thaw_serial": 46072
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 22",
+          "total_night": 50.74,
+          "thaw_serial": 46027
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 23",
+          "total_night": 50.74,
+          "thaw_serial": 46057
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 24",
+          "total_night": 50.74,
+          "thaw_serial": 46027
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 25",
+          "total_night": 50.74,
+          "thaw_serial": 46076
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 26",
+          "total_night": 50.74,
+          "thaw_serial": 46022
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 27",
+          "total_night": 50.74,
+          "thaw_serial": 46369
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 28",
+          "total_night": 50.74,
+          "thaw_serial": 46018
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 29",
+          "total_night": 48.55,
+          "thaw_serial": 46064
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 30",
+          "total_night": 48.55,
+          "thaw_serial": 46091
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 31",
+          "total_night": 48.55,
+          "thaw_serial": 46017
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 32",
+          "total_night": 46.28,
+          "thaw_serial": 46068
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 33",
+          "total_night": 46.28,
+          "thaw_serial": 46068
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 34",
+          "total_night": 44.08,
+          "thaw_serial": 46063
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 35",
+          "total_night": 45.54,
+          "thaw_serial": 46038
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 36",
+          "total_night": 44.73,
+          "thaw_serial": 46056
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 37",
+          "total_night": 46.19,
+          "thaw_serial": 46085
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 38",
+          "total_night": 46.19,
+          "thaw_serial": 46012
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 39",
+          "total_night": 45.56,
+          "thaw_serial": 46040
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 40",
+          "total_night": 45.46,
+          "thaw_serial": 46063
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 41",
+          "total_night": 38.87,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 42",
+          "total_night": 38.79,
+          "thaw_serial": 46024
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 43",
+          "total_night": 40.26,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 44",
+          "total_night": 43.18,
+          "thaw_serial": 46043
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 45",
+          "total_night": 43.18,
+          "thaw_serial": 46066
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 46",
+          "total_night": 36.59,
+          "thaw_serial": 46065
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 47",
+          "total_night": 36.59,
+          "thaw_serial": 46069
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 48",
+          "total_night": 36.59,
+          "thaw_serial": 46055
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 49",
+          "total_night": 36.59,
+          "thaw_serial": 46056
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 50",
+          "total_night": 36.59,
+          "thaw_serial": 46069
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 51",
+          "total_night": 36.59,
+          "thaw_serial": 46087
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 52",
+          "total_night": 36.59,
+          "thaw_serial": 46029
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 53",
+          "total_night": 36.59,
+          "thaw_serial": 46039
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 54",
+          "total_night": 36.59,
+          "thaw_serial": 46037
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 55",
+          "total_night": 38.05,
+          "thaw_serial": 46069
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 56",
+          "total_night": 38.05,
+          "thaw_serial": 46007
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 57",
+          "total_night": 38.05,
+          "thaw_serial": 46032
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 58",
+          "total_night": 38.05,
+          "thaw_serial": 46015
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 59",
+          "total_night": 38.05,
+          "thaw_serial": 46007
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 60",
+          "total_night": 38.05,
+          "thaw_serial": 46087
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 61",
+          "total_night": 38.05,
+          "thaw_serial": 46051
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 62",
+          "total_night": 34.39,
+          "thaw_serial": 46022
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 63",
+          "total_night": 30.73,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 64",
+          "total_night": 30.73,
+          "thaw_serial": 46062
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 65",
+          "total_night": 30.73,
+          "thaw_serial": 46027
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 66",
+          "total_night": 30.73,
+          "thaw_serial": 46069
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 67",
+          "total_night": 30.73,
+          "thaw_serial": 46080
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 68",
+          "total_night": 30.73,
+          "thaw_serial": 46018
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 69",
+          "total_night": 30.73,
+          "thaw_serial": 46078
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 70",
+          "total_night": 30.73,
+          "thaw_serial": 46040
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 71",
+          "total_night": 28.53,
+          "thaw_serial": 46052
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 72",
+          "total_night": 24.88,
+          "thaw_serial": 46051
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 73",
+          "total_night": 21.22,
+          "thaw_serial": 46019
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 74",
+          "total_night": 19.02,
+          "thaw_serial": 46074
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 75",
+          "total_night": 19.02,
+          "thaw_serial": 46031
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 76",
+          "total_night": 19.02,
+          "thaw_serial": 46017
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 77",
+          "total_night": 19.02,
+          "thaw_serial": 46092
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 78",
+          "total_night": 19.02,
+          "thaw_serial": 46050
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 79",
+          "total_night": 11.71,
+          "thaw_serial": 46025
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 80",
+          "total_night": 11.71,
+          "thaw_serial": 46074
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 81",
+          "total_night": 11.71,
+          "thaw_serial": 46029
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 82",
+          "total_night": 8.05,
+          "thaw_serial": 46083
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 83",
+          "total_night": 8.05,
+          "thaw_serial": 46024
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 84",
+          "total_night": 8.05,
+          "thaw_serial": 46085
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 85",
+          "total_night": 8.05,
+          "thaw_serial": 46067
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 86",
+          "total_night": 8.05,
+          "thaw_serial": 46091
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 87",
+          "total_night": 8.05,
+          "thaw_serial": 46018
+        },
+        {
+          "wallet": "Wallet 31",
+          "account": "Account 88",
+          "total_night": 2.19,
+          "thaw_serial": 46068
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 1",
+          "total_night": 87.4,
+          "thaw_serial": 46028
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 2",
+          "total_night": 87.4,
+          "thaw_serial": 46037
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 3",
+          "total_night": 87.32,
+          "thaw_serial": 46092
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 4",
+          "total_night": 87.32,
+          "thaw_serial": 46052
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 5",
+          "total_night": 87.32,
+          "thaw_serial": 46068
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 6",
+          "total_night": 87.32,
+          "thaw_serial": 46016
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 7",
+          "total_night": 87.32,
+          "thaw_serial": 46066
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 8",
+          "total_night": 87.32,
+          "thaw_serial": 46018
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 9",
+          "total_night": 87.32,
+          "thaw_serial": 46068
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 10",
+          "total_night": 88.78,
+          "thaw_serial": 46058
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 11",
+          "total_night": 88.78,
+          "thaw_serial": 46045
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 12",
+          "total_night": 90.25,
+          "thaw_serial": 46005
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 13",
+          "total_night": 90.17,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 14",
+          "total_night": 89.44,
+          "thaw_serial": 46063
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 15",
+          "total_night": 90.9,
+          "thaw_serial": 46092
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 16",
+          "total_night": 87.24,
+          "thaw_serial": 46010
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 17",
+          "total_night": 83.58,
+          "thaw_serial": 46044
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 18",
+          "total_night": 89.43,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 19",
+          "total_night": 87.95,
+          "thaw_serial": 46085
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 20",
+          "total_night": 87.14,
+          "thaw_serial": 46022
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 21",
+          "total_night": 84.95,
+          "thaw_serial": 46087
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 22",
+          "total_night": 84.95,
+          "thaw_serial": 46091
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 23",
+          "total_night": 81.29,
+          "thaw_serial": 46033
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 24",
+          "total_night": 84.14,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 25",
+          "total_night": 84.14,
+          "thaw_serial": 46061
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 26",
+          "total_night": 81.94,
+          "thaw_serial": 46042
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 27",
+          "total_night": 81.94,
+          "thaw_serial": 46024
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 28",
+          "total_night": 81.94,
+          "thaw_serial": 46072
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 29",
+          "total_night": 81.94,
+          "thaw_serial": 46055
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 30",
+          "total_night": 74.63,
+          "thaw_serial": 46047
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 31",
+          "total_night": 74.63,
+          "thaw_serial": 46021
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 32",
+          "total_night": 74.63,
+          "thaw_serial": 46021
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 33",
+          "total_night": 74.63,
+          "thaw_serial": 46015
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 34",
+          "total_night": 67.31,
+          "thaw_serial": 46083
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 35",
+          "total_night": 50.48,
+          "thaw_serial": 46090
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 36",
+          "total_night": 40.97,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 37",
+          "total_night": 25.6,
+          "thaw_serial": 46025
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 38",
+          "total_night": 25.6,
+          "thaw_serial": 46083
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 39",
+          "total_night": 21.94,
+          "thaw_serial": 46074
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 40",
+          "total_night": 21.94,
+          "thaw_serial": 46035
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 41",
+          "total_night": 21.94,
+          "thaw_serial": 46018
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 42",
+          "total_night": 21.94,
+          "thaw_serial": 46019
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 43",
+          "total_night": 21.94,
+          "thaw_serial": 46085
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 44",
+          "total_night": 21.94,
+          "thaw_serial": 46059
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 45",
+          "total_night": 21.94,
+          "thaw_serial": 46044
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 46",
+          "total_night": 18.28,
+          "thaw_serial": 46029
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 47",
+          "total_night": 18.28,
+          "thaw_serial": 46056
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 48",
+          "total_night": 18.28,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 49",
+          "total_night": 18.28,
+          "thaw_serial": 46091
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 50",
+          "total_night": 18.28,
+          "thaw_serial": 46039
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 51",
+          "total_night": 14.63,
+          "thaw_serial": 46048
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 52",
+          "total_night": 14.63,
+          "thaw_serial": 46052
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 53",
+          "total_night": 14.63,
+          "thaw_serial": 46043
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 54",
+          "total_night": 14.63,
+          "thaw_serial": 46080
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 55",
+          "total_night": 14.63,
+          "thaw_serial": 46047
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 56",
+          "total_night": 14.64,
+          "thaw_serial": 46048
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 57",
+          "total_night": 14.63,
+          "thaw_serial": 46020
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 58",
+          "total_night": 14.63,
+          "thaw_serial": 46051
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 59",
+          "total_night": 14.63,
+          "thaw_serial": 46062
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 60",
+          "total_night": 14.63,
+          "thaw_serial": 46088
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 61",
+          "total_night": 14.63,
+          "thaw_serial": 46090
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 62",
+          "total_night": 14.63,
+          "thaw_serial": 46081
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 63",
+          "total_night": 14.63,
+          "thaw_serial": 46033
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 64",
+          "total_night": 14.63,
+          "thaw_serial": 46054
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 65",
+          "total_night": 14.63,
+          "thaw_serial": 46036
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 66",
+          "total_night": 14.63,
+          "thaw_serial": 46093
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 67",
+          "total_night": 14.63,
+          "thaw_serial": 46046
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 68",
+          "total_night": 14.63,
+          "thaw_serial": 46062
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 69",
+          "total_night": 10.97,
+          "thaw_serial": 46048
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 70",
+          "total_night": 10.97,
+          "thaw_serial": 46054
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 71",
+          "total_night": 7.31,
+          "thaw_serial": 46082
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 72",
+          "total_night": 7.31,
+          "thaw_serial": 46071
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 73",
+          "total_night": 7.31,
+          "thaw_serial": 46040
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 74",
+          "total_night": 7.31,
+          "thaw_serial": 46047
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 75",
+          "total_night": 7.31,
+          "thaw_serial": 46027
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 76",
+          "total_night": 7.31,
+          "thaw_serial": 46020
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 77",
+          "total_night": 7.31,
+          "thaw_serial": 46025
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 78",
+          "total_night": 3.65,
+          "thaw_serial": 46055
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 79",
+          "total_night": 3.65,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 30",
+          "account": "Account 80",
+          "total_night": 3.65,
+          "thaw_serial": 46022
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 1",
+          "total_night": 84.84,
+          "thaw_serial": 46033
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 2",
+          "total_night": 81.18,
+          "thaw_serial": 46047
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 3",
+          "total_night": 81.18,
+          "thaw_serial": 46063
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 4",
+          "total_night": 81.18,
+          "thaw_serial": 46021
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 5",
+          "total_night": 81.18,
+          "thaw_serial": 46048
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 6",
+          "total_night": 81.18,
+          "thaw_serial": 46065
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 7",
+          "total_night": 77.53,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 8",
+          "total_night": 75.26,
+          "thaw_serial": 46040
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 9",
+          "total_night": 73.06,
+          "thaw_serial": 46050
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 10",
+          "total_night": 72.99,
+          "thaw_serial": 46061
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 11",
+          "total_night": 68.45,
+          "thaw_serial": 46062
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 12",
+          "total_night": 71.3,
+          "thaw_serial": 46059
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 13",
+          "total_night": 70.49,
+          "thaw_serial": 46005
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 14",
+          "total_night": 69.54,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 15",
+          "total_night": 73.92,
+          "thaw_serial": 46031
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 16",
+          "total_night": 76.7,
+          "thaw_serial": 46005
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 17",
+          "total_night": 75.82,
+          "thaw_serial": 46017
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 18",
+          "total_night": 66.6,
+          "thaw_serial": 46065
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 19",
+          "total_night": 68.06,
+          "thaw_serial": 46028
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 20",
+          "total_night": 68.06,
+          "thaw_serial": 46075
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 21",
+          "total_night": 64.4,
+          "thaw_serial": 46032
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 22",
+          "total_night": 62.2,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 23",
+          "total_night": 56.35,
+          "thaw_serial": 46053
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 24",
+          "total_night": 41.72,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 25",
+          "total_night": 35.8,
+          "thaw_serial": 46083
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 26",
+          "total_night": 33.66,
+          "thaw_serial": 46052
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 27",
+          "total_night": 33.66,
+          "thaw_serial": 46044
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 28",
+          "total_night": 33.66,
+          "thaw_serial": 46067
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 29",
+          "total_night": 27.81,
+          "thaw_serial": 46081
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 30",
+          "total_night": 21.22,
+          "thaw_serial": 46027
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 31",
+          "total_night": 17.56,
+          "thaw_serial": 46044
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 32",
+          "total_night": 15.36,
+          "thaw_serial": 46008
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 33",
+          "total_night": 11.71,
+          "thaw_serial": 46006
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 34",
+          "total_night": 5.85,
+          "thaw_serial": 46026
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 35",
+          "total_night": 5.85,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 36",
+          "total_night": 5.85,
+          "thaw_serial": 46053
+        },
+        {
+          "wallet": "Wallet 29",
+          "account": "Account 37",
+          "total_night": 3.65,
+          "thaw_serial": 46093
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 1",
+          "total_night": 73.06,
+          "thaw_serial": 46016
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 2",
+          "total_night": 70.79,
+          "thaw_serial": 46041
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 3",
+          "total_night": 69.84,
+          "thaw_serial": 46022
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 4",
+          "total_night": 70.49,
+          "thaw_serial": 46018
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 5",
+          "total_night": 57.9,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 6",
+          "total_night": 54.82,
+          "thaw_serial": 46011
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 7",
+          "total_night": 42.02,
+          "thaw_serial": 46056
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 8",
+          "total_night": 33.23,
+          "thaw_serial": 46035
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 9",
+          "total_night": 30.01,
+          "thaw_serial": 46056
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 10",
+          "total_night": 27.81,
+          "thaw_serial": 46086
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 11",
+          "total_night": 23.42,
+          "thaw_serial": 46089
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 12",
+          "total_night": 19.76,
+          "thaw_serial": 46066
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 13",
+          "total_night": 16.1,
+          "thaw_serial": 46033
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 14",
+          "total_night": 13.9,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 15",
+          "total_night": 8.05,
+          "thaw_serial": 46076
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 16",
+          "total_night": 5.85,
+          "thaw_serial": 46027
+        },
+        {
+          "wallet": "Wallet 28",
+          "account": "Account 17",
+          "total_night": 5.85,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 1",
+          "total_night": 73.87,
+          "thaw_serial": 46067
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 2",
+          "total_night": 73.87,
+          "thaw_serial": 46044
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 3",
+          "total_night": 75.33,
+          "thaw_serial": 46012
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 4",
+          "total_night": 75.26,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 5",
+          "total_night": 75.26,
+          "thaw_serial": 46015
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 6",
+          "total_night": 72.99,
+          "thaw_serial": 46008
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 7",
+          "total_night": 72.99,
+          "thaw_serial": 46008
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 8",
+          "total_night": 68.52,
+          "thaw_serial": 46026
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 9",
+          "total_night": 61.63,
+          "thaw_serial": 46015
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 10",
+          "total_night": 60.75,
+          "thaw_serial": 46076
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 11",
+          "total_night": 59.94,
+          "thaw_serial": 46049
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 12",
+          "total_night": 56.07,
+          "thaw_serial": 46046
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 13",
+          "total_night": 54.52,
+          "thaw_serial": 46012
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 14",
+          "total_night": 48.6,
+          "thaw_serial": 46058
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 15",
+          "total_night": 38.27,
+          "thaw_serial": 46021
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 16",
+          "total_night": 36.01,
+          "thaw_serial": 46078
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 17",
+          "total_night": 33.66,
+          "thaw_serial": 46031
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 18",
+          "total_night": 24.15,
+          "thaw_serial": 46009
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 19",
+          "total_night": 14.64,
+          "thaw_serial": 46070
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 20",
+          "total_night": 14.64,
+          "thaw_serial": 46012
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 21",
+          "total_night": 8.78,
+          "thaw_serial": 46074
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 22",
+          "total_night": 8.78,
+          "thaw_serial": 46076
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 23",
+          "total_night": 8.78,
+          "thaw_serial": 46029
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 24",
+          "total_night": 4.39,
+          "thaw_serial": 46060
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 25",
+          "total_night": 2.19,
+          "thaw_serial": 46089
+        },
+        {
+          "wallet": "Wallet 27",
+          "account": "Account 26",
+          "total_night": 2.19,
+          "thaw_serial": 46083
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 1",
+          "total_night": 76.14,
+          "thaw_serial": 46055
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 2",
+          "total_night": 76.14,
+          "thaw_serial": 46045
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 3",
+          "total_night": 76.14,
+          "thaw_serial": 46023
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 4",
+          "total_night": 73.8,
+          "thaw_serial": 46004
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 5",
+          "total_night": 71.53,
+          "thaw_serial": 46020
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 6",
+          "total_night": 69.26,
+          "thaw_serial": 46062
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 7",
+          "total_night": 69.98,
+          "thaw_serial": 46089
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 8",
+          "total_night": 63.32,
+          "thaw_serial": 46023
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 9",
+          "total_night": 57.82,
+          "thaw_serial": 46021
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 10",
+          "total_night": 55.48,
+          "thaw_serial": 46048
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 11",
+          "total_night": 51.67,
+          "thaw_serial": 46089
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 12",
+          "total_night": 50.79,
+          "thaw_serial": 46054
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 13",
+          "total_night": 48.52,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 14",
+          "total_night": 38.2,
+          "thaw_serial": 46062
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 15",
+          "total_night": 32.28,
+          "thaw_serial": 46089
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 16",
+          "total_night": 32.2,
+          "thaw_serial": 46032
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 17",
+          "total_night": 32.2,
+          "thaw_serial": 46042
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 18",
+          "total_night": 28.55,
+          "thaw_serial": 46083
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 19",
+          "total_night": 26.35,
+          "thaw_serial": 46021
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 20",
+          "total_night": 20.49,
+          "thaw_serial": 46035
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 21",
+          "total_night": 13.9,
+          "thaw_serial": 46031
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 22",
+          "total_night": 8.05,
+          "thaw_serial": 46082
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 23",
+          "total_night": 8.05,
+          "thaw_serial": 46011
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 24",
+          "total_night": 2.19,
+          "thaw_serial": 46002
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 25",
+          "total_night": 2.19,
+          "thaw_serial": 46024
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 26",
+          "total_night": 2.19,
+          "thaw_serial": 46058
+        },
+        {
+          "wallet": "Wallet 26",
+          "account": "Account 27",
+          "total_night": 2.19,
+          "thaw_serial": 46081
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 1",
+          "total_night": 114.99,
+          "thaw_serial": 46053
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 2",
+          "total_night": 112.72,
+          "thaw_serial": 46068
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 3",
+          "total_night": 106.79,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 4",
+          "total_night": 106.72,
+          "thaw_serial": 46062
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 5",
+          "total_night": 97.5,
+          "thaw_serial": 46041
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 6",
+          "total_night": 97.5,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 7",
+          "total_night": 96.69,
+          "thaw_serial": 46075
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 8",
+          "total_night": 94.35,
+          "thaw_serial": 46005
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 9",
+          "total_night": 77.07,
+          "thaw_serial": 46032
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 10",
+          "total_night": 70.48,
+          "thaw_serial": 46079
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 11",
+          "total_night": 64.63,
+          "thaw_serial": 46043
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 12",
+          "total_night": 64.47,
+          "thaw_serial": 46011
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 13",
+          "total_night": 58.55,
+          "thaw_serial": 46065
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 14",
+          "total_night": 54.15,
+          "thaw_serial": 46050
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 15",
+          "total_night": 53.41,
+          "thaw_serial": 46044
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 16",
+          "total_night": 46.82,
+          "thaw_serial": 46057
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 17",
+          "total_night": 40.97,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 18",
+          "total_night": 35.11,
+          "thaw_serial": 46080
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 19",
+          "total_night": 31.46,
+          "thaw_serial": 46065
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 20",
+          "total_night": 25.6,
+          "thaw_serial": 46004
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 21",
+          "total_night": 21.94,
+          "thaw_serial": 46086
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 22",
+          "total_night": 21.94,
+          "thaw_serial": 46054
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 23",
+          "total_night": 14.63,
+          "thaw_serial": 46025
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 24",
+          "total_night": 10.97,
+          "thaw_serial": 46078
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 25",
+          "total_night": 7.31,
+          "thaw_serial": 46090
+        },
+        {
+          "wallet": "Wallet 25",
+          "account": "Account 26",
+          "total_night": 7.31,
+          "thaw_serial": 46070
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 1",
+          "total_night": 78.41,
+          "thaw_serial": 46071
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 2",
+          "total_night": 78.41,
+          "thaw_serial": 46033
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 3",
+          "total_night": 78.41,
+          "thaw_serial": 46077
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 4",
+          "total_night": 78.34,
+          "thaw_serial": 46065
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 5",
+          "total_night": 78.26,
+          "thaw_serial": 46070
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 6",
+          "total_night": 75.99,
+          "thaw_serial": 46028
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 7",
+          "total_night": 70.72,
+          "thaw_serial": 46022
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 8",
+          "total_night": 67.5,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 9",
+          "total_night": 64.26,
+          "thaw_serial": 46092
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 10",
+          "total_night": 63.46,
+          "thaw_serial": 46060
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 11",
+          "total_night": 61.19,
+          "thaw_serial": 46043
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 12",
+          "total_night": 60.45,
+          "thaw_serial": 46058
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 13",
+          "total_night": 50.06,
+          "thaw_serial": 46046
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 14",
+          "total_night": 44.2,
+          "thaw_serial": 46036
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 15",
+          "total_night": 35.2,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 16",
+          "total_night": 30.8,
+          "thaw_serial": 46084
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 17",
+          "total_night": 23.49,
+          "thaw_serial": 46058
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 18",
+          "total_night": 13.97,
+          "thaw_serial": 46008
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 19",
+          "total_night": 13.97,
+          "thaw_serial": 46065
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 20",
+          "total_night": 8.12,
+          "thaw_serial": 46044
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 21",
+          "total_night": 5.85,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 22",
+          "total_night": 2.19,
+          "thaw_serial": 46055
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 23",
+          "total_night": 2.19,
+          "thaw_serial": 46044
+        },
+        {
+          "wallet": "Wallet 24",
+          "account": "Account 24",
+          "total_night": 2.19,
+          "thaw_serial": 46045
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 1",
+          "total_night": 78.41,
+          "thaw_serial": 46080
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 2",
+          "total_night": 78.41,
+          "thaw_serial": 46017
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 3",
+          "total_night": 78.34,
+          "thaw_serial": 46025
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 4",
+          "total_night": 77.53,
+          "thaw_serial": 46057
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 5",
+          "total_night": 77.53,
+          "thaw_serial": 46042
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 6",
+          "total_night": 75.91,
+          "thaw_serial": 46088
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 7",
+          "total_night": 74.22,
+          "thaw_serial": 46081
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 8",
+          "total_night": 70.41,
+          "thaw_serial": 46069
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 9",
+          "total_night": 55.19,
+          "thaw_serial": 46083
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 10",
+          "total_night": 52.04,
+          "thaw_serial": 46016
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 11",
+          "total_night": 48.38,
+          "thaw_serial": 46033
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 12",
+          "total_night": 48.38,
+          "thaw_serial": 46071
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 13",
+          "total_night": 40.33,
+          "thaw_serial": 46079
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 14",
+          "total_night": 33.16,
+          "thaw_serial": 46090
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 15",
+          "total_night": 32.94,
+          "thaw_serial": 46043
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 16",
+          "total_night": 21.23,
+          "thaw_serial": 46035
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 17",
+          "total_night": 14.64,
+          "thaw_serial": 46084
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 18",
+          "total_night": 12.44,
+          "thaw_serial": 46081
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 19",
+          "total_night": 8.78,
+          "thaw_serial": 46060
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 20",
+          "total_night": 4.39,
+          "thaw_serial": 46068
+        },
+        {
+          "wallet": "Wallet 23",
+          "account": "Account 21",
+          "total_night": 2.19,
+          "thaw_serial": 46031
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 1",
+          "total_night": 85.21,
+          "thaw_serial": 46065
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 2",
+          "total_night": 85.21,
+          "thaw_serial": 46036
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 3",
+          "total_night": 85.21,
+          "thaw_serial": 46003
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 4",
+          "total_night": 85.21,
+          "thaw_serial": 46072
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 5",
+          "total_night": 85.21,
+          "thaw_serial": 46065
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 6",
+          "total_night": 84.48,
+          "thaw_serial": 46086
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 7",
+          "total_night": 84.48,
+          "thaw_serial": 46006
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 8",
+          "total_night": 80.17,
+          "thaw_serial": 46085
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 9",
+          "total_night": 77.37,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 10",
+          "total_night": 75.61,
+          "thaw_serial": 46050
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 11",
+          "total_night": 78.46,
+          "thaw_serial": 46010
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 12",
+          "total_night": 64.34,
+          "thaw_serial": 46049
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 13",
+          "total_night": 58.48,
+          "thaw_serial": 46060
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 14",
+          "total_night": 58.41,
+          "thaw_serial": 46005
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 15",
+          "total_night": 44.43,
+          "thaw_serial": 46082
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 16",
+          "total_night": 33.3,
+          "thaw_serial": 46039
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 17",
+          "total_night": 31.03,
+          "thaw_serial": 46001
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 18",
+          "total_night": 15.53,
+          "thaw_serial": 46064
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 19",
+          "total_night": 8.86,
+          "thaw_serial": 46064
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 20",
+          "total_night": 2.19,
+          "thaw_serial": 46006
+        },
+        {
+          "wallet": "Wallet 22",
+          "account": "Account 21",
+          "total_night": 2.19,
+          "thaw_serial": 46052
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 1",
+          "total_night": 85.21,
+          "thaw_serial": 46053
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 2",
+          "total_night": 85.21,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 3",
+          "total_night": 85.21,
+          "thaw_serial": 46053
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 4",
+          "total_night": 85.21,
+          "thaw_serial": 46042
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 5",
+          "total_night": 85.21,
+          "thaw_serial": 46072
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 6",
+          "total_night": 85.21,
+          "thaw_serial": 46029
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 7",
+          "total_night": 85.21,
+          "thaw_serial": 46043
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 8",
+          "total_night": 85.21,
+          "thaw_serial": 46011
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 9",
+          "total_night": 85.21,
+          "thaw_serial": 46044
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 10",
+          "total_night": 85.21,
+          "thaw_serial": 46086
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 11",
+          "total_night": 85.21,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 12",
+          "total_night": 85.21,
+          "thaw_serial": 46078
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 13",
+          "total_night": 85.21,
+          "thaw_serial": 46044
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 14",
+          "total_night": 85.21,
+          "thaw_serial": 46070
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 15",
+          "total_night": 82.95,
+          "thaw_serial": 46080
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 16",
+          "total_night": 82.95,
+          "thaw_serial": 46030
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 17",
+          "total_night": 82.95,
+          "thaw_serial": 46088
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 18",
+          "total_night": 82.95,
+          "thaw_serial": 46048
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 19",
+          "total_night": 82.95,
+          "thaw_serial": 46006
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 20",
+          "total_night": 82.95,
+          "thaw_serial": 46054
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 21",
+          "total_night": 82.95,
+          "thaw_serial": 46088
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 22",
+          "total_night": 82.95,
+          "thaw_serial": 46049
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 23",
+          "total_night": 82.95,
+          "thaw_serial": 46027
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 24",
+          "total_night": 82.87,
+          "thaw_serial": 46079
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 25",
+          "total_night": 76.21,
+          "thaw_serial": 46048
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 26",
+          "total_night": 76.14,
+          "thaw_serial": 46055
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 27",
+          "total_night": 70.79,
+          "thaw_serial": 46022
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 28",
+          "total_night": 70.79,
+          "thaw_serial": 46072
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 29",
+          "total_night": 69.98,
+          "thaw_serial": 46081
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 30",
+          "total_night": 68.37,
+          "thaw_serial": 46037
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 31",
+          "total_night": 66.02,
+          "thaw_serial": 46018
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 32",
+          "total_night": 67.41,
+          "thaw_serial": 46012
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 33",
+          "total_night": 68.8,
+          "thaw_serial": 46060
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 34",
+          "total_night": 64.26,
+          "thaw_serial": 46036
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 35",
+          "total_night": 55.12,
+          "thaw_serial": 46004
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 36",
+          "total_night": 51.3,
+          "thaw_serial": 46024
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 37",
+          "total_night": 51.3,
+          "thaw_serial": 46046
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 38",
+          "total_night": 51.3,
+          "thaw_serial": 46038
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 39",
+          "total_night": 51.23,
+          "thaw_serial": 46037
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 40",
+          "total_night": 51.23,
+          "thaw_serial": 46018
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 41",
+          "total_night": 51.23,
+          "thaw_serial": 46062
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 42",
+          "total_night": 51.23,
+          "thaw_serial": 46071
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 43",
+          "total_night": 51.23,
+          "thaw_serial": 46082
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 44",
+          "total_night": 51.23,
+          "thaw_serial": 46030
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 45",
+          "total_night": 51.23,
+          "thaw_serial": 46074
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 46",
+          "total_night": 47.57,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 47",
+          "total_night": 47.57,
+          "thaw_serial": 46086
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 48",
+          "total_night": 47.57,
+          "thaw_serial": 46049
+        },
+        {
+          "wallet": "Wallet 21",
+          "account": "Account 49",
+          "total_night": 47.57,
+          "thaw_serial": 46007
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 1",
+          "total_night": 115.34,
+          "thaw_serial": 46086
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 2",
+          "total_night": 111.69,
+          "thaw_serial": 46032
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 3",
+          "total_night": 108.96,
+          "thaw_serial": 46031
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 4",
+          "total_night": 105.3,
+          "thaw_serial": 46051
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 5",
+          "total_night": 101.64,
+          "thaw_serial": 46032
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 6",
+          "total_night": 101.57,
+          "thaw_serial": 46068
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 7",
+          "total_night": 96.3,
+          "thaw_serial": 46082
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 8",
+          "total_night": 102.07,
+          "thaw_serial": 46028
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 9",
+          "total_night": 89.91,
+          "thaw_serial": 46026
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 10",
+          "total_night": 87.62,
+          "thaw_serial": 46076
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 11",
+          "total_night": 77.16,
+          "thaw_serial": 46007
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 12",
+          "total_night": 74.89,
+          "thaw_serial": 46016
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 13",
+          "total_night": 67.27,
+          "thaw_serial": 46085
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 14",
+          "total_night": 61.34,
+          "thaw_serial": 46087
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 15",
+          "total_night": 58.34,
+          "thaw_serial": 46054
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 16",
+          "total_night": 53.94,
+          "thaw_serial": 46028
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 17",
+          "total_night": 47.56,
+          "thaw_serial": 46080
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 18",
+          "total_night": 43.9,
+          "thaw_serial": 46077
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 19",
+          "total_night": 40.24,
+          "thaw_serial": 46011
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 20",
+          "total_night": 26.34,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 21",
+          "total_night": 20.48,
+          "thaw_serial": 46037
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 22",
+          "total_night": 16.82,
+          "thaw_serial": 46009
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 23",
+          "total_night": 13.17,
+          "thaw_serial": 46023
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 24",
+          "total_night": 5.85,
+          "thaw_serial": 46058
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 25",
+          "total_night": 5.85,
+          "thaw_serial": 46043
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 26",
+          "total_night": 5.85,
+          "thaw_serial": 46022
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 27",
+          "total_night": 5.85,
+          "thaw_serial": 46010
+        },
+        {
+          "wallet": "Wallet 20",
+          "account": "Account 28",
+          "total_night": 5.85,
+          "thaw_serial": 46006
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 1",
+          "total_night": 128.11,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 2",
+          "total_night": 120.8,
+          "thaw_serial": 46019
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 3",
+          "total_night": 120.8,
+          "thaw_serial": 46066
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 4",
+          "total_night": 117.07,
+          "thaw_serial": 46057
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 5",
+          "total_night": 117.07,
+          "thaw_serial": 46062
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 6",
+          "total_night": 113.41,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 7",
+          "total_night": 102.44,
+          "thaw_serial": 46062
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 8",
+          "total_night": 98.78,
+          "thaw_serial": 46033
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 9",
+          "total_night": 98.76,
+          "thaw_serial": 46024
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 10",
+          "total_night": 96.41,
+          "thaw_serial": 46079
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 11",
+          "total_night": 97.07,
+          "thaw_serial": 46036
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 12",
+          "total_night": 93.97,
+          "thaw_serial": 46051
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 13",
+          "total_night": 86.35,
+          "thaw_serial": 46051
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 14",
+          "total_night": 87.0,
+          "thaw_serial": 46004
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 15",
+          "total_night": 85.74,
+          "thaw_serial": 46024
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 16",
+          "total_night": 79.86,
+          "thaw_serial": 46014
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 17",
+          "total_night": 75.32,
+          "thaw_serial": 46075
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 18",
+          "total_night": 71.86,
+          "thaw_serial": 46040
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 19",
+          "total_night": 69.59,
+          "thaw_serial": 46025
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 20",
+          "total_night": 67.32,
+          "thaw_serial": 46074
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 21",
+          "total_night": 57.07,
+          "thaw_serial": 46038
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 22",
+          "total_night": 51.22,
+          "thaw_serial": 46005
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 23",
+          "total_night": 43.17,
+          "thaw_serial": 46024
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 24",
+          "total_night": 35.85,
+          "thaw_serial": 46048
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 25",
+          "total_night": 32.19,
+          "thaw_serial": 46049
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 26",
+          "total_night": 17.56,
+          "thaw_serial": 46042
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 27",
+          "total_night": 11.71,
+          "thaw_serial": 46058
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 28",
+          "total_night": 8.05,
+          "thaw_serial": 46061
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 29",
+          "total_night": 5.85,
+          "thaw_serial": 46063
+        },
+        {
+          "wallet": "Wallet 19",
+          "account": "Account 30",
+          "total_night": 5.85,
+          "thaw_serial": 46086
+        },
+        {
+          "wallet": "Wallet 15",
+          "account": "Account 1",
+          "total_night": 177.2,
+          "thaw_serial": 46084
+        },
+        {
+          "wallet": "Wallet 15",
+          "account": "Account 2",
+          "total_night": 177.2,
+          "thaw_serial": 46052
+        },
+        {
+          "wallet": "Wallet 15",
+          "account": "Account 3",
+          "total_night": 169.88,
+          "thaw_serial": 46089
+        },
+        {
+          "wallet": "Wallet 15",
+          "account": "Account 4",
+          "total_night": 158.91,
+          "thaw_serial": 46083
+        },
+        {
+          "wallet": "Wallet 15",
+          "account": "Account 5",
+          "total_night": 149.39,
+          "thaw_serial": 46083
+        },
+        {
+          "wallet": "Wallet 15",
+          "account": "Account 6",
+          "total_night": 148.13,
+          "thaw_serial": 46021
+        },
+        {
+          "wallet": "Wallet 15",
+          "account": "Account 7",
+          "total_night": 147.32,
+          "thaw_serial": 46062
+        },
+        {
+          "wallet": "Wallet 15",
+          "account": "Account 8",
+          "total_night": 143.11,
+          "thaw_serial": 46025
+        },
+        {
+          "wallet": "Wallet 15",
+          "account": "Account 9",
+          "total_night": 126.98,
+          "thaw_serial": 46020
+        },
+        {
+          "wallet": "Wallet 15",
+          "account": "Account 10",
+          "total_night": 112.92,
+          "thaw_serial": 46028
+        },
+        {
+          "wallet": "Wallet 15",
+          "account": "Account 11",
+          "total_night": 113.43,
+          "thaw_serial": 46034
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 1",
+          "total_night": 192.4,
+          "thaw_serial": 46065
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 2",
+          "total_night": 188.74,
+          "thaw_serial": 46009
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 3",
+          "total_night": 181.43,
+          "thaw_serial": 46074
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 4",
+          "total_night": 181.43,
+          "thaw_serial": 46012
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 5",
+          "total_night": 177.77,
+          "thaw_serial": 46088
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 6",
+          "total_night": 166.8,
+          "thaw_serial": 46004
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 7",
+          "total_night": 166.8,
+          "thaw_serial": 46002
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 8",
+          "total_night": 157.49,
+          "thaw_serial": 46030
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 9",
+          "total_night": 149.04,
+          "thaw_serial": 46041
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 10",
+          "total_night": 149.04,
+          "thaw_serial": 46087
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 11",
+          "total_night": 114.33,
+          "thaw_serial": 46033
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 12",
+          "total_night": 104.92,
+          "thaw_serial": 46017
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 13",
+          "total_night": 94.05,
+          "thaw_serial": 46014
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 14",
+          "total_night": 89.98,
+          "thaw_serial": 46091
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 15",
+          "total_night": 85.99,
+          "thaw_serial": 46002
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 16",
+          "total_night": 80.92,
+          "thaw_serial": 46037
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 17",
+          "total_night": 78.65,
+          "thaw_serial": 46066
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 18",
+          "total_night": 70.86,
+          "thaw_serial": 46080
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 19",
+          "total_night": 64.95,
+          "thaw_serial": 46022
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 20",
+          "total_night": 61.27,
+          "thaw_serial": 46007
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 21",
+          "total_night": 51.02,
+          "thaw_serial": 46076
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 22",
+          "total_night": 45.17,
+          "thaw_serial": 46050
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 23",
+          "total_night": 39.31,
+          "thaw_serial": 46070
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 24",
+          "total_night": 25.61,
+          "thaw_serial": 46046
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 25",
+          "total_night": 13.9,
+          "thaw_serial": 46018
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 26",
+          "total_night": 8.05,
+          "thaw_serial": 46068
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 27",
+          "total_night": 5.85,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 28",
+          "total_night": 5.85,
+          "thaw_serial": 46008
+        },
+        {
+          "wallet": "Wallet 14",
+          "account": "Account 29",
+          "total_night": 2.19,
+          "thaw_serial": 45698
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 1",
+          "total_night": 242.85,
+          "thaw_serial": 46054
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 2",
+          "total_night": 240.12,
+          "thaw_serial": 46007
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 3",
+          "total_night": 237.92,
+          "thaw_serial": 46010
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 4",
+          "total_night": 218.35,
+          "thaw_serial": 45671
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 5",
+          "total_night": 200.19,
+          "thaw_serial": 46010
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 6",
+          "total_night": 184.42,
+          "thaw_serial": 46011
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 7",
+          "total_night": 157.1,
+          "thaw_serial": 46028
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 8",
+          "total_night": 146.48,
+          "thaw_serial": 46013
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 9",
+          "total_night": 92.48,
+          "thaw_serial": 46039
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 10",
+          "total_night": 78.31,
+          "thaw_serial": 46054
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 11",
+          "total_night": 77.69,
+          "thaw_serial": 46040
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 12",
+          "total_night": 75.42,
+          "thaw_serial": 46053
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 13",
+          "total_night": 64.96,
+          "thaw_serial": 46040
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 14",
+          "total_night": 61.88,
+          "thaw_serial": 46091
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 15",
+          "total_night": 52.76,
+          "thaw_serial": 46060
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 16",
+          "total_night": 46.84,
+          "thaw_serial": 46023
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 17",
+          "total_night": 43.18,
+          "thaw_serial": 46014
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 18",
+          "total_night": 33.66,
+          "thaw_serial": 46017
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 19",
+          "total_night": 27.81,
+          "thaw_serial": 46033
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 20",
+          "total_night": 18.3,
+          "thaw_serial": 46035
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 21",
+          "total_night": 18.3,
+          "thaw_serial": 46026
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 22",
+          "total_night": 18.3,
+          "thaw_serial": 46059
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 23",
+          "total_night": 14.64,
+          "thaw_serial": 46069
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 24",
+          "total_night": 12.44,
+          "thaw_serial": 46049
+        },
+        {
+          "wallet": "Wallet 13",
+          "account": "Account 25",
+          "total_night": 2.19,
+          "thaw_serial": 46014
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 1",
+          "total_night": 230.07,
+          "thaw_serial": 46038
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 2",
+          "total_night": 212.84,
+          "thaw_serial": 46051
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 3",
+          "total_night": 178.99,
+          "thaw_serial": 46004
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 4",
+          "total_night": 160.5,
+          "thaw_serial": 46081
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 5",
+          "total_night": 145.18,
+          "thaw_serial": 46033
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 6",
+          "total_night": 111.04,
+          "thaw_serial": 46044
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 7",
+          "total_night": 92.8,
+          "thaw_serial": 46032
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 8",
+          "total_night": 71.18,
+          "thaw_serial": 46025
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 9",
+          "total_night": 56.02,
+          "thaw_serial": 46042
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 10",
+          "total_night": 45.24,
+          "thaw_serial": 46004
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 11",
+          "total_night": 34.92,
+          "thaw_serial": 46053
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 12",
+          "total_night": 28.53,
+          "thaw_serial": 46065
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 13",
+          "total_night": 21.22,
+          "thaw_serial": 46009
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 14",
+          "total_night": 19.02,
+          "thaw_serial": 46073
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 15",
+          "total_night": 13.17,
+          "thaw_serial": 46007
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 16",
+          "total_night": 13.17,
+          "thaw_serial": 46061
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 17",
+          "total_night": 13.17,
+          "thaw_serial": 46080
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 18",
+          "total_night": 10.97,
+          "thaw_serial": 46011
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 19",
+          "total_night": 7.31,
+          "thaw_serial": 46038
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 20",
+          "total_night": 3.65,
+          "thaw_serial": 46091
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 21",
+          "total_night": 3.65,
+          "thaw_serial": 46081
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 22",
+          "total_night": 3.65,
+          "thaw_serial": 46032
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 23",
+          "total_night": 3.65,
+          "thaw_serial": 46041
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 24",
+          "total_night": 3.65,
+          "thaw_serial": 46030
+        },
+        {
+          "wallet": "Wallet 12",
+          "account": "Account 25",
+          "total_night": 2.19,
+          "thaw_serial": 46031
+        }
+      ]    </script>
+    <script>
+        // Load data from embedded JSON (safer than external file for small data)
+        const rawData = document.getElementById('data-json').textContent.trim();
+        const data = rawData ? JSON.parse(rawData) : [];
+
+        const today = new Date(); // Real-time current date
+
+        // Excel serial to JS Date (handles 1900 leap bug)
+        function serialToDate(serial) {
+            const utc_days = Math.floor(serial - 25569);
+            const utc_value = utc_days * 86400 * 1000;
+            const date_info = new Date(utc_value);
+            const fractional_day = serial - Math.floor(serial) + 0.0000001;
+            let total_milliseconds = utc_value + fractional_day * 86400 * 1000;
+            return new Date(total_milliseconds);
+        }
+
+        function daysSince(firstDate) {
+            return Math.floor((today - firstDate) / (1000 * 60 * 60 * 24));
+        }
+
+        function getPct(days) {
+            if (days < 0) return 0;
+            if (days < 90) return 0.25;
+            if (days < 180) return 0.50;
+            if (days < 270) return 0.75;
+            return 1.00;
+        }
+
+        let totalRedeemable = 0;
+        let totalNight = 0;
+        const tableData = [];
+
+        data.forEach(item => {
+            const firstThaw = serialToDate(item.thaw_serial);
+            const days = daysSince(firstThaw);
+            const pct = getPct(days);
+            const redeemable = item.total_night * pct;
+
+            totalNight += item.total_night;
+            totalRedeemable += redeemable;
+
+            tableData.push([
+                item.wallet,
+                item.account,
+                item.total_night.toFixed(2),
+                firstThaw.toISOString().split('T')[0],
+                (pct * 100) + '%',
+                redeemable.toFixed(2)
+            ]);
+        });
+
+        document.getElementById('stats').innerHTML = `
+            <h2>Stats as of ${today.toISOString().split('T')[0]}</h2>
+            <p><strong>Total NIGHT:</strong> ${totalNight.toFixed(2)}</p>
+            <p><strong>Redeemable NIGHT:</strong> ${totalRedeemable.toFixed(2)}</p>
+            <p><strong>Redeemable Percentage:</strong> ${((totalRedeemable / totalNight) * 100).toFixed(2)}%</p>
+        `;
+
+        $('#thawTable').DataTable({
+            data: tableData,
+            pageLength: 50,
+            order: [[5, 'desc']],
+            columnDefs: [{ targets: [2,5], className: 'dt-right' }]
+        });
+    </script>
+</body>
+</html>
